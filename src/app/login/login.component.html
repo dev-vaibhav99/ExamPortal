@@ -1,23 +1,24 @@
-<div class="container pt-5">
-    <div class="row">
-        <div class="image col-6">
+<body>
+    <div class="container pt-5">
+        <div class="row">
+            
+            <div class="col-6 mx-auto login-form p-5 pt-1 text-light">
+                <p class="heading text-center mt-5 mb-5">Login</p>
+    
+                <form #data="ngForm" (submit)="loginUser(data)" method="post" class="">
+                <div class="mb-5">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="email" class="form-control" id="username" name="username" [(ngModel)]="login.username"
+                    placeholder="Username">
+                </div>
+                <div class="mb-5">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="login.password"
+                    placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-login px-4 mt-4">SIGN IN</button>
+            </form>
         </div>
-        <div class="col-6 login-form px-5">
-            <p class="display-5 text-center mt-5 mb-5">Login</p>
-
-            <form #data="ngForm" (submit)="loginUser(data)" method="post">
-            <div class="mb-3">  
-                <i class="fa-solid fa-user"></i>
-                <input type="email" class="form-control" id="username" name="username" [(ngModel)]="login.username"
-                placeholder="User Name">
-            </div>
-            <div class="mb-3">
-                <i class="fa-solid fa-key"></i>
-                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="login.password"
-                placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary btn-round px-4">Sign in</button>
-        </form>
+        </div>
     </div>
-    </div>
-</div>
+</body>
