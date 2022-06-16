@@ -34,6 +34,7 @@ input{
     border: none;
     border-bottom: 2px solid white;
     font-family: 'Roboto', sans-serif; 
+    letter-spacing: 2px; 
 }
 
 input:focus{
@@ -41,7 +42,6 @@ input:focus{
     color: white;
     border-bottom: 2px solid white;
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 2px; 
 }
 
 ::placeholder {
