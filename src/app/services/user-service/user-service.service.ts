@@ -23,4 +23,8 @@ export class UserServiceService {
   forgotPassword(email:string){
     return this.http.post(this.baseUrl+`forgetPassword`,email);
   }
+
+  unlockAccount(data:any){
+    return this.http.post(this.baseUrl+`unlock-acc`,data);
+  }
 }

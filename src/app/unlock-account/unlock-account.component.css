@@ -1,3 +1,11 @@
+.image{
+    background-image: url("src/app/images/login.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+}
+
 body{
     background-color: rgb(22, 38, 74);
     font-family: 'Roboto', sans-serif;
@@ -23,7 +31,6 @@ body{
 input{
     background: rgb(0, 10, 29);
     border: none;
-    color: white;
     border-bottom: 2px solid white;
     font-family: 'Roboto', sans-serif; 
     letter-spacing: 2px; 
@@ -53,23 +60,4 @@ input:focus{
 
 a{
     color: rgb(122, 192, 249);
-}
-
-.form-check-input{
-    border: 2px solid white;
-    background-color: white;
-}
-
-.form-select{
-    background-color: rgb(0, 10, 29);
-    color: white;
-}
-
-hr{
-    border: 2px;
-}
-
-label{
-    font-size: large;
-    letter-spacing: 2px;
 }

@@ -3,6 +3,26 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: #7ac0f9; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #16264a;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000a1d; 
+  }
+
 :root{
     --black : #000;
     --body-bg-color: rgb(22, 38, 74);
