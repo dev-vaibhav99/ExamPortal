@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Registration } from '../models/registration';
-import { RegistrationService } from '../services/user-service/registration.service';
+import { UserServiceService } from '../services/user-service/user-service.service';
 
 @Component({
   selector: 'app-registration',
@@ -10,7 +10,7 @@ import { RegistrationService } from '../services/user-service/registration.servi
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private registrationService: RegistrationService) { }
+  constructor(private registrationService: UserServiceService) { }
 
   registeredUser:Registration = new Registration();
 
