@@ -2,3 +2,11 @@
 *{
     font-family: 'Roboto', sans-serif;
 }
+
+:root{
+    --black : #000;
+    --body-bg-color: rgb(22, 38, 74);
+    --bg-color: rgb(0, 10, 29);
+    --accent : rgb(122, 192, 249);
+    
+}
