@@ -1,5 +1,6 @@
+import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Registration } from '../models/registration';
 import { UserServiceService } from '../services/user-service/user-service.service';
 
@@ -10,15 +11,37 @@ import { UserServiceService } from '../services/user-service/user-service.servic
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private registrationService: UserServiceService) { }
+  constructor(private service: UserServiceService) { }
+  
+  reg:Registration = new Registration();
+  registrationForm: FormGroup;
 
-  registeredUser:Registration = new Registration();
+  countries:any;
+  states:any;
+  cities:any;
 
-  registerUser(data:NgForm){
-    this.registrationService.registerUser(data).subscribe(
+  ngOnInit(): void {
+  
+    this.registrationForm = new FormGroup({
+      'reg.fname':new FormControl(),
+      'reg.lname':new FormControl(),
+      'reg.email':new FormControl(),
+      'reg.phno':new FormControl(),
+      'reg.dob':new FormControl(),
+      'reg.gender':new FormControl(),
+      'reg.countryId':new FormControl(),
+      'reg.stateId':new FormControl(),
+      'reg.cityId':new FormControl()
+    })
+    
+    this.getCountries();
+}
+
+  registerUser(){
+    this.service.registerUser(this.registrationForm.value).subscribe(
       data=>{
-        this.registeredUser = data;
-        console.log(this.registeredUser);
+        this.reg = data;
+        console.log(this.reg);
       },
       err => {
         console.log(err);
@@ -26,7 +49,39 @@ export class RegistrationComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
+  getCountries(){
+    this.service.getCountries().subscribe(
+      response=>{
+        this.countries = response;
+        console.log(response);
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+  }
+
+  getStateByCountryId(countryId:number){
+    this.service.getStatesByCountryId(countryId).subscribe(
+      response=>{
+        this.states = response
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+
+
+  getCitiesByStateId(stateId:number){
+    this.service.getCitiesByStateId(stateId).subscribe(
+      response=>{
+        this.cities = response;
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 
 }

@@ -3,36 +3,36 @@
         <div class="row"> 
             <div class="col-5 mx-auto login-form p-5 pt-1 text-light">
                 <p class="heading text-center mt-5 mb-5">Registration</p>
-                <form #data="ngForm" (submit)="registerUser(data)" method="post" class="">
+                <form [formGroup]="registrationForm" (submit)="registerUser()" method="post" class="">
                     <div class="mb-5">
-                        <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="registeredUser.firstName"
+                        <input type="text" class="form-control" id="firstName" name="reg.fname" formControlName="reg.fname"
                         placeholder="First Name">
                     </div>
                     <div class="mb-5">
-                        <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="registeredUser.lastName"
+                        <input type="text" class="form-control" id="lastName" name="reg.lname" formControlName="reg.lname"
                         placeholder="Last Name">
                     </div>
                     <div class="mb-5">
-                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="registeredUser.email"
+                        <input type="email" class="form-control" id="email" name="reg.email" formControlName="reg.email"
                         placeholder="Email">
                     </div>
                     <div class="mb-5">
-                        <input type="number" class="form-control" id="contact" name="contact" [(ngModel)]="registeredUser.contact"
+                        <input type="number" class="form-control" id="contact" name="reg.phno" formControlName="reg.phno"
                         placeholder="Contact">
                     </div>
                     <div class="mb-5">
-                        <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="registeredUser.dob"
+                        <input type="date" class="form-control" id="dob" name="reg.dob" formControlName="reg.dob"
                         placeholder="Contact">
                     </div>
                     <label for="" class="col-6">Gender</label>
                     <div class="mb-1 form-check row">
                         <div class="row mt-3">
                             <div class="col-6">
-                                <input type="radio" class="form-check-input" id="male" name="gender" [(ngModel)]="registeredUser.gender">
-                                <label for="male" aria-selected="true">Male</label>
+                                <input type="radio" class="form-check-input" value="male" name="reg.gender" formControlName="reg.gender">
+                                <label for="male">Male</label>
                             </div>
                             <div class="col-6">
-                                <input type="radio" class="form-check-input" id="female" name="gender" [(ngModel)]="registeredUser.gender">
+                                <input type="radio" class="form-check-input" value="female" name="reg.gender" formControlName="reg.gender">
                                 <label for="female">Female</label>
                             </div>
                         </div>
@@ -41,33 +41,27 @@
                     <div class="mt-4 mb-5">
                         <div class="row">
                             <label for="" class="form-label col-lg-4">Country</label>
-                            <select class="form-select col-lg-4">
-                                <option selected>Select Country</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select (change)="getStateByCountryId($event.target.value)" formControlName="reg.countryId" class="form-select col-lg-4">
+                                <option value="0">Select Country</option>
+                                <option *ngFor="let country of countries | keyvalue" [value]="country.key">{{country.value}}</option>
                             </select>
-                        </div>
+                        </div>  
                     </div>
                     <div class="mb-5">
                         <div class="row">
                             <label for="" class="form-label col-lg-4">State</label>
-                            <select class="form-select col-lg-4">
-                                <option selected>Select State</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select (change)="getCitiesByStateId($event.target.value)" class="form-select col-lg-4" formControlName="reg.stateId">
+                                <option value="0">Select State</option>
+                                <option *ngFor="let state of states | keyvalue" [value]="state.key">{{state.value}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-5">
                         <div class="row">
                             <label for="" class="form-label col-lg-4">City</label>
-                            <select class="form-select col-lg-4">
-                                <option selected>Select City</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select col-lg-4" formControlName="reg.cityId">
+                                <option value="0">Select City</option>
+                                <option *ngFor="let city of cities | keyvalue" [value]="city.key">{{city.value}}</option>
                             </select>
                         </div>
                     </div>

@@ -10,14 +10,14 @@ import { Registration } from 'src/app/models/registration';
 export class UserServiceService {
 
   constructor(private http:HttpClient) { }
-  baseUrl = "http://localhost:8080/";
+  baseUrl = "http://localhost:9090/";
 
   loginUser(login:Login):Observable<Login>{
     return this.http.post<Login>(this.baseUrl+"user/login",login);
   }
 
-  registerUser(data:any):Observable<Registration>{
-    return this.http.post<Registration>(this.baseUrl+"user/save",data);
+  registerUser(data:Registration):Observable<Registration>{
+    return this.http.post<Registration>(this.baseUrl+"saveUser",data);
   }
 
   forgotPassword(email:string){
@@ -26,5 +26,17 @@ export class UserServiceService {
 
   unlockAccount(data:any){
     return this.http.post(this.baseUrl+`unlock-acc`,data);
+  }
+
+  getCountries(){
+    return this.http.get(this.baseUrl+`countries`);
+  }
+
+  getStatesByCountryId(countryId:number){
+    return this.http.get(this.baseUrl+`states/${countryId}`)
+  }
+
+  getCitiesByStateId(stateId:number){
+    return this.http.get(this.baseUrl+`cities/${stateId}`)
   }
 }
