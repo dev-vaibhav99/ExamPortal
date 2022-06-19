@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Login } from 'src/app/models/login';
 import { Registration } from 'src/app/models/registration';
+import { UnlockAccount } from 'src/app/models/unlock-account';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,8 @@ export class UserServiceService {
     return this.http.post(this.baseUrl+`forgetPassword`,email);
   }
 
-  unlockAccount(data:any){
-    return this.http.post(this.baseUrl+`unlock-acc`,data);
+  unlockAccount(data:any):Observable<UnlockAccount>{
+    return this.http.post<UnlockAccount>(this.baseUrl+`unlock-acc`,data);
   }
 
   getCountries(){

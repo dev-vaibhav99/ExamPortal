@@ -3,27 +3,27 @@
         <div class="row"> 
             <div class="col-5 mx-auto login-form p-5 pt-1 text-light">
                 <p class="heading text-center mt-5 mb-5">Unlock Account</p>
-                <form #data="ngForm" (submit)="unlockAccount(data)" method="post" class="">
+                <form [formGroup]="form" (submit)="unlockAccount()" method="post" class="">
                     <div class="mb-5">
-                        <input type="email" class="form-control" id="username" name="username" [(ngModel)]="data.username"
+                        <input type="email" class="form-control" id="username" name="model.email" formControlName="model.email"
                         placeholder="Username">
                     </div>
                     <div class="mb-5">
-                        <input type="password" class="form-control" id="tempPassword" name="temporaryPassword" [(ngModel)]="data.temporaryPassword"
+                        <input type="password" class="form-control" id="tempPassword" name="model.temporaryPassword" formControlName="model.temporaryPassword"
                         placeholder="Temporary Password">
                     </div>
                     <div class="mb-5">
-                        <input type="password" class="form-control" id="newPassword" name="newPassword" [(ngModel)]="data.newPassword"
+                        <input type="password" class="form-control" id="newPassword" name="model.newPassword" formControlName="model.newPassword"
                         placeholder="New Password">
                     </div>
                     <div class="mb-5">
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="data.confirmPassword"
+                        <input type="password" class="form-control" id="confirmPassword" name="model.confirmPassword" formControlName="model.confirmPassword"
                         placeholder="Confirm Password"><br>
                     </div>
                     <button type="submit" class="btn btn-login px-4">SIGN IN</button>
                     
                 </form>
-        </div>
+            </div>
         </div>
     </div>
 </body>

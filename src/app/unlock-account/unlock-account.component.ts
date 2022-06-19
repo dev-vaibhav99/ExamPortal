@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { UserServiceService } from '../services/user-service/user-service.service';
+import { UnlockAccount } from '../models/unlock-account';
 
 @Component({
   selector: 'app-unlock-account',
@@ -9,11 +10,15 @@ import { UserServiceService } from '../services/user-service/user-service.servic
 })
 export class UnlockAccountComponent implements OnInit {
 
+  form:FormGroup;
+  model:UnlockAccount = new UnlockAccount();
+
   constructor(private service: UserServiceService) { }
 
-  unlockAccount(data:NgForm){
-    this.service.unlockAccount(data).subscribe(
+  unlockAccount(){
+    this.service.unlockAccount(this.form.value).subscribe(
       data=>{
+        this.model = data;
         console.log(data);
       }, 
       err=>{
@@ -23,6 +28,12 @@ export class UnlockAccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
 
+    this.form = new FormGroup({
+      'model.email':new FormControl(),
+      'model.temporaryPassword':new FormControl(),
+      'model.newPassword':new FormControl(),
+      'model.confirmPassword':new FormControl()
+    })
+  }
 }
